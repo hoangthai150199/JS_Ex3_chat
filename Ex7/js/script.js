@@ -1,54 +1,293 @@
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+// function startTimer(duration, display) {
+//     var timer = duration, minutes, seconds;
+//     setInterval(function () {
+//         minutes = parseInt(timer / 60, 10);
+//         seconds = parseInt(timer % 60, 10);
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+//         minutes = minutes < 10 ? "0" + minutes : minutes;
+//         seconds = seconds < 10 ? "0" + seconds : seconds;
+// ''
+//         display.textContent = minutes + ":" + seconds;
 
-        display.textContent = minutes + ":" + seconds;
+//         if (--timer < 0) {
+//             timer = duration;
+//         }
+//     }, 1000);
+// }
 
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
+const totalTime = 10 * 60 * 1000; 
+const questions = [
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 2: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời2',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời2',
+                checked : false
+            },{
+                text : 'C: Câu trả lời2',
+                checked : false
+            },{
+                text : 'D: Câu trả lời2',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+    {
+        question: 'Câu 1: Câu hỏi 1?',
+        answers: [
+            {
+                text : 'A: Câu trả lời',
+                checked : false
+            },
+            {
+                text : 'B: Câu trả lời',
+                checked : false
+            },{
+                text : 'C: Câu trả lời',
+                checked : false
+            },{
+                text : 'D: Câu trả lời',
+                checked : false
+            },
+        ],
+    },
+]
 
 window.onload = function () {
-    var fiveMinutes = 60 * 10,
-        display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-};
 
-// // Set the date we're counting down to
-// var countDownDate = new Date("Jan 5, 2022 15:37:25").getTime();
+    const btnStart = document.querySelector('#save-btn');
+    const labelTime = document.querySelector('#time');
+    
+    
+    // Start button and remaining of time
+    var timeBegin = localStorage.getItem('timeBegin');
+    var runTime = function() {
+        if (timeBegin) {
+            btnStart.innerText = 'Submit';
+            setInterval(function() {
+                showRemainTime();
+            }, 1000) 
+        } else {
+            labelTime.innerText = '20 : 00';
+        }
+    }
+    runTime();
+    btnStart.addEventListener('click', function() {
+        if (!timeBegin) {
+            btnStart.innerHTML = 'Submit';
+            localStorage.setItem('timeBegin', new Date());
+            timeBegin = localStorage.getItem('timeBegin');
+            runTime();
+        } else {
+            // TODO: Submit
+        }
+    })
 
-// // Update the count down every 1 second
-// var x = setInterval(function() {
+    var showRemainTime = function() {
+        let containTime = totalTime - (new Date() - new Date(timeBegin))
+        labelTime.innerText = '' + timeTransformToText(containTime)
+    }
 
-//   // Get today's date and time
-//   var now = new Date().getTime();
+    var timeTransformToText = function(ms) {
+        if(ms < 0) {
+            return '00 : 00';
+        }
+        let totalMs = Math.floor((+ms)/1000);
+        let minusDuration = Math.floor(totalMs/60);
+        if(minusDuration < 10) {
+            minusDuration = '0' + minusDuration;
+        }
+        let secondsDuration = Math.floor(totalMs - minusDuration*60);
+        if(secondsDuration < 10) {
+            secondsDuration = '0' + secondsDuration;
+        }
+        return `${minusDuration} : ${secondsDuration}`;
+    }
+    
 
-//   // Find the distance between now and the count down date
-//   var distance = countDownDate - now;
+    /**
+     * Load question 
+     */
+    const questionCheckboxList = document.querySelectorAll('.question-checkbox');
+    questionCheckboxList.forEach((element, index) => {
+        element.setAttribute('disabled', 'disabled');
+        element.parentElement.addEventListener('click', function(event){
+            showQuestion(index);
+        });
+    });
 
-//   // Time calculations for days, hours, minutes and seconds
-//   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var showQuestion = function(indexQuestion) {
 
-//   // Display the result in the element with id="demo"
-//   document.getElementById("time").innerHTML = days + "d " + hours + "h "
-//   + minutes + "m " + seconds + "s ";
+        let textQuestion= document.querySelector('#id-question #text-question');
+        let textAnswers= document.querySelector('#id-question #text-answers');
+        
+        textQuestion.innerText = questions[indexQuestion].question;
+        let answersHtml = questions[indexQuestion].answers.map((answer, indexAnswer) => {
+            return ` <li><input  type="checkbox" onclick="checkedAnswer()" >${answer.text}</li>`;
+        }).join('')
+        textAnswers.innerHTML = answersHtml;
+    }
 
-//   // If the count down is finished, write some text
-//   if (distance < 0) {
-//     clearInterval(x);
-//     document.getElementById("time").innerHTML = "EXPIRED";
-//   }
-// }, 1000);
+    var checkedAnswer = function() {
+        console.log(indexQuestion + ':' + indexAnswer)
+    }
+}
 
 
 
